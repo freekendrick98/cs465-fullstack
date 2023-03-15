@@ -1,16 +1,21 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const hbs = require('hbs');
 
-var indexRouter = require('./app_server/routes/index');
-var usersRouter = require('./app_server/routes/users');
-
-var app = express();
+//const indexRouter = require('./app_server/routes/index');
+const usersRouter = require('./app_server/routes/users');
+const travelRouter = require('./app_server/routes/travel');
+const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'app_serrver', 'views'));
+app.set('views', path.join(__dirname, 'app_server', 'views'));
+
+//register handlebars partials (https://www.npmjs.com/package/hbs)
+hbs.registerPartials(path.join(__dirname, 'app_server', 'views/partials'));
+
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
@@ -19,8 +24,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+//app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/travel', travelRouter);
+app.get('/contact', (req, res) => res.render('contact', {contactSelected: req.path == '/contact'}));
+app.get('/about', (req, res) => res.render('about', {contactSelected: req.path == '/about'}));
+app.get('/meals', (req, res) => res.render('meals', {contactSelected: req.path == '/meals'}));
+app.get('/news', (req, res) => res.render('news', {contactSelected: req.path == '/news'}));
+app.get('/rooms', (req, res) => res.render('rooms', {contactSelected: req.path == '/rooms'}));
+app.get('/index', (req, res) => res.render('index', {contactSelected: req.path == '/index'}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
