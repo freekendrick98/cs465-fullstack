@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/', indexRouter);
+
 app.use('/users', usersRouter);
 app.use('/travel', travelRouter);
 app.get('/contact', (req, res) => res.render('contact', {contactSelected: req.path == '/contact'}));
@@ -32,7 +32,7 @@ app.get('/about', (req, res) => res.render('about', {contactSelected: req.path =
 app.get('/meals', (req, res) => res.render('meals', {contactSelected: req.path == '/meals'}));
 app.get('/news', (req, res) => res.render('news', {contactSelected: req.path == '/news'}));
 app.get('/rooms', (req, res) => res.render('rooms', {contactSelected: req.path == '/rooms'}));
-app.get('/index', (req, res) => res.render('index', {contactSelected: req.path == '/index'}));
+app.get('/', (req, res) => res.render('index', {contactSelected: req.path == '/index'}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
