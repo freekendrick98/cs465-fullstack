@@ -4,11 +4,15 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const hbs = require('hbs');
+require('./app_api/models/db');
+
+require('./app_server/models/db');
 
 //const indexRouter = require('./app_server/routes/index');
 const usersRouter = require('./app_server/routes/users');
 const travelRouter = require('./app_server/routes/travel');
 const app = express();
+const apiRouter = require('./app_api/routes/index');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
@@ -27,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', usersRouter);
 app.use('/travel', travelRouter);
+app.use('/api', apiRouter);
 app.get('/contact', (req, res) => res.render('contact', {contactSelected: req.path == '/contact'}));
 app.get('/about', (req, res) => res.render('about', {contactSelected: req.path == '/about'}));
 app.get('/meals', (req, res) => res.render('meals', {contactSelected: req.path == '/meals'}));
