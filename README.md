@@ -26,7 +26,7 @@ Testing
 
 Methods for request and retrieval necessitate various types of API testing of endpoints, in addition to the difficulties of testing with added layers of security. Explain your understanding of methods, endpoints, and security in a full stack application.
 
-There were multiple test ran through the localhost:3000 to determine if the website would perform accordingly. The coding was done in visual studio and I would check the websites upon making changes to see if they were still running. As the course progresses we utilized Postman, which allowd me to perform more test and use commands such as GET, POST, PUT, and DELETE. These commands alter the database by either adding data, editing existing data, and deleting data(only worked for me via backend). The endpoints were the results of the commands run and how they altered the database. Security was the last aspect and that was achieved through the use of a login screen that stored user credentials for user verification.
+There were multiple test ran through the localhost:3000 to determine if the website would perform accordingly. The coding was done in visual studio and I would check the websites upon making changes to see if they were still running. As the course progresses we utilized Postman, which allowed me to perform more test and use commands such as GET, POST, PUT, and DELETE. These commands alter the database by either adding data, editing existing data, and deleting data(only worked for me via backend). The endpoints were the results of the commands run and how they altered the database. Security was the last aspect and that was achieved through the use of a login screen that stored user credentials for user verification.
 
 
 Reflection
